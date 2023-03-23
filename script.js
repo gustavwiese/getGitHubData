@@ -3,13 +3,21 @@
 window.addEventListener("load", start);
 
 async function start() {
-  const harry = await getGibHubUser("harry");
+  const harry = await getGibHubUser("https://raw.githubusercontent.com/cederdorff/dat-js/main/data/harry.json");
   showGitHubUser(harry);
-  console.log(harry);
+
+  const ron = await getGibHubUser("https://raw.githubusercontent.com/cederdorff/dat-js/main/data/ron.json");
+  showGitHubUser(ron);
+
+  const hermione = await getGibHubUser("https://raw.githubusercontent.com/cederdorff/dat-js/main/data/hermione.json");
+  showGitHubUser(hermione);
+
+  const severus = await getGibHubUser("https://raw.githubusercontent.com/cederdorff/dat-js/main/data/severus.json");
+  showGitHubUser(severus);
 }
 
-async function getGibHubUser(character) {
-  const response = await fetch(`https://raw.githubusercontent.com/cederdorff/dat-js/main/data/${character}.json`);
+async function getGibHubUser(url) {
+  const response = await fetch(url);
   const data = await response.json();
   return data;
 }
